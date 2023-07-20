@@ -3,17 +3,18 @@ import Link from "next/link";
 
 import { NavLinks } from "@/constants";
 import { getCurrentUser } from "@/lib/session";
-
+import { useSession } from 'next-auth/react';
 import AuthProviders from "./AuthProviders";
 import Button from "./Button";
 import ProfileMenu from "./ProfileMenu";
 
 const Navbar = async () => {
   const session = await getCurrentUser();
-
+  // const session = {};
+  // const { session } =useSession();
   return (
-    <nav className='flexBetween navbar'>
-      <div className='flex-1 flexStart gap-10'>
+    <nav className='flexBetween navbar backdrop-blur-sm bg-white/60 sticky top-0'>
+      <div className='flex-1 flexStart gap-10 '>
         <Link href='/'>
           <Image
             src='/logo.svg'
@@ -35,23 +36,19 @@ const Navbar = async () => {
         {session?.user ? (
           <>
             <ProfileMenu session={session} />
-
             <Link href="/create-project">
               <Button title='Share work' />
             </Link>
           </>
-        ) : (
-          <AuthProviders />
-        )}
+         ) : (
+           <AuthProviders />
+         )}
+
       </div>
     </nav>
   );
 };
 
 export default Navbar;
-
-
-
-
 
 

@@ -16,7 +16,6 @@ type Provider = {
   
   type Providers = Record<string, Provider>;
 
-
 const AuthProviders = () => {
     const [providers, setProviders] = useState<Providers | null>(null);
 
