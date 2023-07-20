@@ -13,7 +13,7 @@ const Navbar = async () => {
   // const session = {};
   // const { session } =useSession();
   return (
-    <nav className='flexBetween navbar backdrop-blur-sm bg-white/60 sticky top-0'>
+    <nav className='flexBetween navbar backdrop-blur-sm bg-white/60 sticky top-0 '>
       <div className='flex-1 flexStart gap-10 '>
         <Link href='/'>
           <Image
