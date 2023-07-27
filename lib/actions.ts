@@ -43,13 +43,13 @@ const makeGraphQLRequest = async (query: string, variables = {}) => {
 
 export const fetchAllProjects = (category?: string | null, endcursor?: string | null) => {
   client.setHeader("x-api-key", apiKey);
-  const validCategory = category ?? ''
-  return makeGraphQLRequest(projectsQuery, { category:validCategory, endcursor });
-  // if (category) {
-  //   return makeGraphQLRequest(projectsQueryWithFilter, { category, endcursor });
-  // }
+  // const validCategory = category ?? ''
+  // return makeGraphQLRequest(projectsQuery, { category:validCategory, endcursor });
+  if (category) {
+    return makeGraphQLRequest(projectsQueryWithFilter, { category, endcursor });
+  }
   
-  // return makeGraphQLRequest(projectsQueryAll, { endcursor});
+  return makeGraphQLRequest(projectsQueryAll, { endcursor});
 };
 
 export const createNewProject = async (form: ProjectForm, creatorId: string, token: string) => {
